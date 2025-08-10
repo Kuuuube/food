@@ -82,6 +82,9 @@ def markdown_to_html(markdown_string):
                 state_active = False
             i += 1
 
+        if state_active:
+            markdown_lines[markdown_lines_len - 1] += stateful_replacement["ending_suffix"]
+
     # replacements that switch state after each replace
     on_off_stateful_replacements = [
         {"target": r"\*\*", "replacement_on": "<b>", "replacement_off": "</b>"},
