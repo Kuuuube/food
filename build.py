@@ -6,7 +6,7 @@ BASE_DIRS = ["recipes"]
 BUILD_DIR = "dist"
 INDEX_BLACKLIST_DIRS = ["assets"]
 
-shutil.rmtree(BUILD_DIR)
+shutil.rmtree(BUILD_DIR, ignore_errors = True)
 os.makedirs(BUILD_DIR, exist_ok = True)
 shutil.copytree("assets", BUILD_DIR + "/assets", dirs_exist_ok = True)
 
