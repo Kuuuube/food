@@ -1683,3 +1683,7 @@ visual-element>* {
         color: #fff!important;
     }
 }
+
+#placeholder-index-page {
+    text-align: center;
+}

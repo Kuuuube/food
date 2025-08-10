@@ -131,7 +131,7 @@ for noindex_dir in get_noindex_dirs([BUILD_DIR]):
     output_html_path = noindex_dir + "/index.html"
     with open(output_html_path, "w") as index_file:
         index_file.write(get_html_head(output_html_path))
-        index_file.write("<body>\n")
+        index_file.write("<body id=\"placeholder-index-page\">\n")
         for item in noindex_dir_list:
             if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                 continue
