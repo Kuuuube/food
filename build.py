@@ -133,8 +133,10 @@ for noindex_dir in get_noindex_dirs([BUILD_DIR]):
     with open(output_html_path, "w") as index_file:
         index_file.write(get_html_head(output_html_path))
         index_file.write("<body id=\"placeholder-index-page\"><div class=\"border-container\">\n")
+        index_items = []
         for item in noindex_dir_list:
             if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                 continue
-            index_file.write("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>\n")
+            index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>\n")
+        index_file.write("<hr>\n".join(index_items))
         index_file.write("</div></body>\n")
