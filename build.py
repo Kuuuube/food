@@ -73,6 +73,22 @@ def markdown_to_html(markdown_string):
                 state_active = False
             i += 1
 
+    on_off_stateful_replacements = [
+        {"target": r"\*\*", "replacement_on": "<b>", "replacement_off": "</b>"},
+        {"target": r"\*", "replacement_on": "<i>", "replacement_off": "</i>"},
+    ]
+    for on_off_stateful_replacement in on_off_stateful_replacements:
+        state_active = True
+        i = 0
+        markdown_lines_len = len(markdown_lines)
+        while i < markdown_lines_len:
+            while re.search(on_off_stateful_replacement["target"], markdown_lines[i]):
+                replacement_text = on_off_stateful_replacement["replacement_on"] if state_active else on_off_stateful_replacement["replacement_off"]
+                markdown_lines[i] = re.subn(on_off_stateful_replacement["target"], replacement_text, markdown_lines[i], count = 1)[0]
+                state_active = not state_active
+
+            i += 1
+
     return "\n".join(markdown_lines)
 
 for file_path in walk_dirs(BASE_DIRS):
