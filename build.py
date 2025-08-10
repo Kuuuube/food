@@ -4,7 +4,9 @@ import shutil
 
 BASE_DIRS = ["recipes"]
 BUILD_DIR = "dist"
+INDEX_BLACKLIST_DIRS = ["assets"]
 
+shutil.rmtree(BUILD_DIR)
 os.makedirs(BUILD_DIR, exist_ok = True)
 shutil.copytree("assets", BUILD_DIR + "/assets", dirs_exist_ok = True)
 
@@ -108,3 +110,30 @@ for file_path in walk_dirs(BASE_DIRS):
             output_html.write("<body>\n")
             output_html.write(markdown_to_html(markdown_data))
             output_html.write("</body>\n")
+
+def get_noindex_dirs(start_dirs):
+    dirs = start_dirs
+    noindex_dirs = []
+    while len(dirs) > 0:
+        index_found = False
+        current_dir = dirs.pop()
+        for item in os.scandir(current_dir):
+            if item.is_dir() and item.name not in INDEX_BLACKLIST_DIRS:
+                dirs.append(item.path)
+            elif item.is_file() and item.name == "index.html":
+                index_found = True
+        if not index_found:
+            noindex_dirs.append(current_dir)
+    return noindex_dirs
+
+for noindex_dir in get_noindex_dirs([BUILD_DIR]):
+    noindex_dir_list = os.scandir(noindex_dir)
+    output_html_path = noindex_dir + "/index.html"
+    with open(output_html_path, "w") as index_file:
+        index_file.write(get_html_head(output_html_path))
+        index_file.write("<body>\n")
+        for item in noindex_dir_list:
+            if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
+                continue
+            index_file.write("<h1><a href=\"" + "./" + item.name + "\">" + item.name.title() + "</a></h1>")
+        index_file.write("</body>\n")
