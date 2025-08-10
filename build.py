@@ -31,6 +31,8 @@ def markdown_to_html(markdown_string):
     result_html = ""
     markdown_string = re.sub("(\n|\r){2,}", "\n\n", markdown_string) # remove excessive blank lines
     markdown_lines = markdown_string.split("\n")
+
+    # a -> b replacements
     basic_replacements = [
         {"target": "^###### ", "prefix": "", "replacement": "<h6>", "suffix": "</h6>"},
         {"target": "^##### ", "prefix": "", "replacement": "<h5>", "suffix": "</h5>"},
@@ -47,6 +49,7 @@ def markdown_to_html(markdown_string):
                 markdown_lines[i] = basic_replacement["prefix"] + re.sub(basic_replacement["target"], basic_replacement["replacement"], markdown_lines[i]) + basic_replacement["suffix"]
             i += 1
 
+    # replacements that need special handling at the start and end as well as allowing alternate matches to hold the state
     stateful_replacements = [
         {"target": "^- ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
          "alternate_target": r"^\s{2,}", "alternate_prefix": "", "alternate_replacement": "    ", "alternate_suffix": "<br>"},
@@ -73,6 +76,7 @@ def markdown_to_html(markdown_string):
                 state_active = False
             i += 1
 
+    # replacements that switch state after each replace
     on_off_stateful_replacements = [
         {"target": r"\*\*", "replacement_on": "<b>", "replacement_off": "</b>"},
         {"target": r"\*", "replacement_on": "<i>", "replacement_off": "</i>"},
