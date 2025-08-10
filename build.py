@@ -36,7 +36,7 @@ def get_html_head(output_html_path):
 
 def markdown_to_html(markdown_string):
     markdown_string = re.sub("(\n|\r){2,}", "\n\n", markdown_string) # remove excessive blank lines
-    markdown_lines = markdown_string.split("\n")
+    markdown_lines = list(map(str.strip, markdown_string.split("\n"))) # strip excess whitespace from all lines
 
     # a -> b replacements
     basic_replacements = [
