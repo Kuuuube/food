@@ -137,5 +137,5 @@ for noindex_dir in get_noindex_dirs([BUILD_DIR]):
         for item in noindex_dir_list:
             if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                 continue
-            index_file.write("<h1><a href=\"" + "./" + item.name + "\">" + item.name.title() + "</a></h1>")
+            index_file.write("<h1><a href=\"" + "./" + item.name + "\">" + item.name.title() + "</a></h1>\n")
         index_file.write("</body>\n")
