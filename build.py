@@ -4,11 +4,13 @@ import shutil
 
 BASE_DIRS = ["recipes"]
 BUILD_DIR = "food"
-INDEX_BLACKLIST_DIRS = ["assets"]
+INDEX_BLACKLIST_DIRS = ["page_assets"]
+BUILD_ASSETS_DIR = "build_assets"
+PAGE_ASSETS_DIR = "page_assets"
 
 shutil.rmtree(BUILD_DIR, ignore_errors = True)
 os.makedirs(BUILD_DIR, exist_ok = True)
-shutil.copytree("assets", BUILD_DIR + "/assets", dirs_exist_ok = True)
+shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_DIR, dirs_exist_ok = True)
 
 def walk_dirs(start_dirs):
     files = []
@@ -22,12 +24,12 @@ def walk_dirs(start_dirs):
     return files
 
 def get_html_head(output_html_path):
-    assets_folder = "../" * (output_html_path.count("/") - 1) + "assets/"
+    assets_folder_relative = "../" * (output_html_path.count("/") - 1) + PAGE_ASSETS_DIR + "/"
     replacements = [
         {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].title()},
-        {"target": r"{./styles.css}", "replacement": assets_folder + "styles.css"},
+        {"target": r"{./styles.css}", "replacement": assets_folder_relative + "styles.css"},
     ]
-    head_html = open("./assets/head.html").read()
+    head_html = open("./" + BUILD_ASSETS_DIR + "/head.html").read()
     for replacement in replacements:
         head_html = head_html.replace(replacement["target"], replacement["replacement"])
     return head_html
