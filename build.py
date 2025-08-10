@@ -48,8 +48,10 @@ def markdown_to_html(markdown_string):
             i += 1
 
     stateful_replacements = [
-        {"target": "^- ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n"},
-        {"target": "^[0-9]. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n"},
+        {"target": "^- ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
+         "alternate_target": r"^\s{2,}", "alternate_prefix": "", "alternate_replacement": "    ", "alternate_suffix": "<br>"},
+        {"target": "^[0-9]. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n",
+         "alternate_target": r"^\s{2,}", "alternate_prefix": "", "alternate_replacement": "    ", "alternate_suffix": "<br>"},
     ]
 
     for stateful_replacement in stateful_replacements:
@@ -58,11 +60,14 @@ def markdown_to_html(markdown_string):
         markdown_lines_len = len(markdown_lines)
         while i < markdown_lines_len:
             found_target = re.search(stateful_replacement["target"], markdown_lines[i])
+            found_alternative_target = re.search(stateful_replacement["alternate_target"], markdown_lines[i])
             if found_target and state_active:
                 markdown_lines[i] = re.sub(stateful_replacement["target"], stateful_replacement["replacement"], markdown_lines[i]) + stateful_replacement["suffix"]
             elif found_target:
                 markdown_lines[i] = stateful_replacement["starting_prefix"] + re.sub(stateful_replacement["target"], stateful_replacement["replacement"], markdown_lines[i]) + stateful_replacement["suffix"]
                 state_active = True
+            elif found_alternative_target and state_active:
+                markdown_lines[i] = re.sub(stateful_replacement["alternate_target"], stateful_replacement["alternate_replacement"], markdown_lines[i])
             elif not found_target and state_active:
                 markdown_lines[i] += stateful_replacement["ending_suffix"]
                 state_active = False
