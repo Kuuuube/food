@@ -78,7 +78,7 @@ def markdown_to_html(markdown_string):
             elif found_alternative_target and state_active:
                 markdown_lines[i] = re.sub(stateful_replacement["alternate_target"], stateful_replacement["alternate_replacement"], markdown_lines[i])
             elif not found_target and state_active:
-                markdown_lines[i] += stateful_replacement["ending_suffix"]
+                markdown_lines[i] = stateful_replacement["ending_suffix"] + "\n" + markdown_lines[i]
                 state_active = False
             i += 1
 
@@ -102,7 +102,17 @@ def markdown_to_html(markdown_string):
 
             i += 1
 
-    return "\n".join(markdown_lines)
+    result_html = "\n".join(markdown_lines)
+
+    # a -> b replacements spanning multiple lines
+    basic_multiline_replacements = [
+        {"target": r"(</.*?>)\n+", "prefix": "", "replacement": r"\1\n", "suffix": ""},
+        {"target": "\n\n", "prefix": "", "replacement": "<br>\n", "suffix": ""},
+    ]
+    for basic_multiline_replacement in basic_multiline_replacements:
+        result_html = basic_multiline_replacement["prefix"] + re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html) + basic_multiline_replacement["suffix"]
+
+    return result_html
 
 for file_path in walk_dirs(BASE_DIRS):
     if file_path.split(".")[-1] == "md":
