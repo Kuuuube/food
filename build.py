@@ -26,7 +26,7 @@ def walk_dirs(start_dirs):
 def get_html_head(output_html_path):
     assets_folder_relative = "../" * (output_html_path.count("/") - 1) + PAGE_ASSETS_DIR + "/"
     replacements = [
-        {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].title()},
+        {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].replace("_", " ").title()},
         {"target": r"{./styles.css}", "replacement": assets_folder_relative + "styles.css"},
     ]
     head_html = open("./" + BUILD_ASSETS_DIR + "/head.html").read()
@@ -35,7 +35,6 @@ def get_html_head(output_html_path):
     return head_html
 
 def markdown_to_html(markdown_string):
-    result_html = ""
     markdown_string = re.sub("(\n|\r){2,}", "\n\n", markdown_string) # remove excessive blank lines
     markdown_lines = markdown_string.split("\n")
 
@@ -137,5 +136,5 @@ for noindex_dir in get_noindex_dirs([BUILD_DIR]):
         for item in noindex_dir_list:
             if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                 continue
-            index_file.write("<h1><a href=\"" + "./" + item.name + "\">" + item.name.title() + "</a></h1>\n")
+            index_file.write("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>\n")
         index_file.write("</body>\n")
