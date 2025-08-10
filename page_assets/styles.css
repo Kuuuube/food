@@ -322,11 +322,15 @@ body#placeholder-index-page {
     margin: 0;
 }
 
-body#placeholder-index-page > h1 {
+body#placeholder-index-page > .border-container {
     text-align: center;
     width: max(max(50vw, 50vh), 500px);
     height: fit-content;
     border: 1px solid var(--bs-body-color);
-    padding: 50px;
     margin: 50px;
+}
+
+.border-container > h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
