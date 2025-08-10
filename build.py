@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import sys
 
 BASE_DIRS = ["recipes"]
 BUILD_DIR = "food"
@@ -8,6 +9,9 @@ INDEX_BLACKLIST_DIRS = ["page_assets"]
 BUILD_ASSETS_DIR = "build_assets"
 PAGE_ASSETS_DIR = "page_assets"
 
+if "build.py" not in os.listdir():
+    print("Aborting build, build.py not found in cwd. Navigate to build.py's parent directory and try again.")
+    sys.exit()
 shutil.rmtree(BUILD_DIR, ignore_errors = True)
 os.makedirs(BUILD_DIR, exist_ok = True)
 shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_DIR, dirs_exist_ok = True)
