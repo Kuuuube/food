@@ -29,6 +29,7 @@ def get_html_head(output_html_path):
 
 def markdown_to_html(markdown_string):
     result_html = ""
+    markdown_string = re.sub("(\n|\r){2,}", "\n\n", markdown_string) # remove excessive blank lines
     markdown_lines = markdown_string.split("\n")
     basic_replacements = [
         {"target": "^###### ", "prefix": "", "replacement": "<h6>", "suffix": "</h6>"},
