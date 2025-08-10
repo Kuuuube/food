@@ -1,9 +1,12 @@
 import os
 import re
+import shutil
 
 BASE_DIRS = ["recipes"]
+BUILD_DIR = "dist"
 
-os.makedirs("dist", exist_ok = True)
+os.makedirs(BUILD_DIR, exist_ok = True)
+shutil.copytree("assets", BUILD_DIR + "/assets", dirs_exist_ok = True)
 
 def walk_dirs(start_dirs):
     files = []
@@ -17,7 +20,7 @@ def walk_dirs(start_dirs):
     return files
 
 def get_html_head(output_html_path):
-    assets_folder = "../" * output_html_path.count("/") + "assets/"
+    assets_folder = "../" * (output_html_path.count("/") - 1) + "assets/"
     replacements = [
         {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].title()},
         {"target": r"{./styles.css}", "replacement": assets_folder + "styles.css"},
