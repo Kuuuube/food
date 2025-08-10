@@ -3,7 +3,7 @@ import re
 import shutil
 
 BASE_DIRS = ["recipes"]
-BUILD_DIR = "dist"
+BUILD_DIR = "food"
 INDEX_BLACKLIST_DIRS = ["assets"]
 
 shutil.rmtree(BUILD_DIR, ignore_errors = True)
