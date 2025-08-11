@@ -3,6 +3,7 @@ import re
 import shutil
 import sys
 import json
+import hashlib
 
 BASE_DIRS = ["page_src/recipes"]
 BUILD_DIR = "dist/food"
@@ -40,6 +41,7 @@ def get_html_head(output_html_path):
 
 def markdown_to_html(markdown_string):
     markdown_string = re.sub("(\n|\r){2,}", "\n\n", markdown_string) # remove excessive blank lines
+    markdown_string_hash = hashlib.sha256(markdown_string.encode("utf-8")).hexdigest()
     markdown_lines = list(map(str.rstrip, markdown_string.split("\n"))) # strip excess whitespace only on right, left side whitespace is sytactically important
 
     # a -> b replacements
@@ -114,6 +116,8 @@ def markdown_to_html(markdown_string):
                 result_html = re.sub(re.escape(regex_match), re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], regex_match), result_html)
         else:
             result_html = re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html)
+
+    result_html = "<span id=\"markdown-hash\" title=\"" + markdown_string_hash + "\">" + markdown_string_hash[:7] + "</span>\n" + result_html
 
     return result_html
 
