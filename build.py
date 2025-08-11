@@ -115,6 +115,7 @@ def markdown_to_html(markdown_string):
     basic_multiline_replacements = [
         {"target": r"(</(li|ol|ul|h\d|sub|br|div|p)>)\n+", "prefix": "", "replacement": r"\1\n", "suffix": ""},
         {"target": "\n\n", "prefix": "", "replacement": "<br>\n", "suffix": ""},
+        {"target": "```((.|\n)*)```", "prefix": "<br>", "replacement": r'<pre>\1</pre>', "suffix": "<br>"},
     ]
     for basic_multiline_replacement in basic_multiline_replacements:
         result_html = basic_multiline_replacement["prefix"] + re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html) + basic_multiline_replacement["suffix"]
