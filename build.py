@@ -44,17 +44,17 @@ def markdown_to_html(markdown_string):
 
     # a -> b replacements
     basic_replacements = [
-        {"target": "^###### ", "prefix": "", "replacement": "<h6>", "suffix": "</h6>"},
-        {"target": "^##### ", "prefix": "", "replacement": "<h5>", "suffix": "</h5>"},
-        {"target": "^#### ", "prefix": "", "replacement": "<h4>", "suffix": "</h4>"},
-        {"target": "^### ", "prefix": "", "replacement": "<h3>", "suffix": "</h3>"},
-        {"target": "^## ", "prefix": "", "replacement": "<h2>", "suffix": "</h2>"},
-        {"target": "^# ", "prefix": "", "replacement": "<h1>", "suffix": "</h1>"},
-        {"target": "^-# ", "prefix": "", "replacement": "<sub>", "suffix": "</sub>"},
-        {"target": r"\[(.+?)\]\((.+?)\)", "prefix": "", "replacement": r'<a href="\2">\1</a>', "suffix": ""},
-        {"target": r"\*\*(.*)\*\*", "prefix": "", "replacement": r'<b>\1</b>', "suffix": ""},
-        {"target": r"\*(.*)\*", "prefix": "", "replacement": r'<i>\1</i>', "suffix": ""},
-        {"target": "__(.*)__", "prefix": "", "replacement": r'<u>\1</u>', "suffix": ""},
+        {"target": "^###### ", "prefix": "", "replacement": "<h6>", "suffix": "</h6>"}, # h6
+        {"target": "^##### ", "prefix": "", "replacement": "<h5>", "suffix": "</h5>"}, # h5
+        {"target": "^#### ", "prefix": "", "replacement": "<h4>", "suffix": "</h4>"}, # h4
+        {"target": "^### ", "prefix": "", "replacement": "<h3>", "suffix": "</h3>"}, # h3
+        {"target": "^## ", "prefix": "", "replacement": "<h2>", "suffix": "</h2>"}, # h2
+        {"target": "^# ", "prefix": "", "replacement": "<h1>", "suffix": "</h1>"}, # h1
+        {"target": "^-# ", "prefix": "", "replacement": "<sub>", "suffix": "</sub>"}, # subtext
+        {"target": r"\[(.+?)\]\((.+?)\)", "prefix": "", "replacement": r'<a href="\2">\1</a>', "suffix": ""}, # link
+        {"target": r"\*\*(.*)\*\*", "prefix": "", "replacement": r'<b>\1</b>', "suffix": ""}, # bold
+        {"target": r"\*(.*)\*", "prefix": "", "replacement": r'<i>\1</i>', "suffix": ""}, # italic
+        {"target": "__(.*)__", "prefix": "", "replacement": r'<u>\1</u>', "suffix": ""}, # underline
     ]
     for basic_replacement in basic_replacements:
         i = 0
@@ -67,9 +67,9 @@ def markdown_to_html(markdown_string):
     # replacements that need special handling at the start and end as well as allowing alternate matches to hold the state
     stateful_replacements = [
         {"target": r"^(-|\*) ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
-         "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"},
+         "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"}, # ul and li children
         {"target": "^[0-9]. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n",
-         "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"},
+         "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"}, # ol and li children
     ]
 
     for stateful_replacement in stateful_replacements:
@@ -98,14 +98,14 @@ def markdown_to_html(markdown_string):
 
     # a -> b replacements spanning multiple lines
     basic_multiline_replacements = [
-        {"target": "```((.|\n)*?)```", "replacement": r'<pre>\1</pre>'},
-        {"target": "`(.*)`", "replacement": r'<code>\1</code>'},
-        {"target": "\n> (.*)", "replacement": r'\n<blockquote>\1</blockquote>'},
-        {"target": "\n>>> ((.|\n)*?(\n(?=\n)|$))", "replacement": r'\n<blockquote>\1</blockquote>'},
-        {"target": "\n", "replacement": r'<br>', "alternate_search": "(<blockquote>.*(?<!</blockquote>)\n(?:.|\n)*</blockquote>)"}, # Set `\n` to `<br>` inside multiline block quote
+        {"target": "```((.|\n)*?)```", "replacement": r'<pre>\1</pre>'}, # multiline code block
+        {"target": "`(.*)`", "replacement": r'<code>\1</code>'}, # inline code block
+        {"target": "\n> (.*)", "replacement": r'\n<blockquote>\1</blockquote>'}, # single line quote
+        {"target": "\n>>> ((.|\n)*?(\n(?=\n)|$))", "replacement": r'\n<blockquote>\1</blockquote>'}, # multiline quote
+        {"target": "\n", "replacement": r'<br>', "alternate_search": "(<blockquote>.*(?<!</blockquote>)\n(?:.|\n)*</blockquote>)"}, # set `\n` to `<br>` inside multiline block quote
 
-        {"target": r"(</(li|ol|ul|h\d|br|div|p|pre|blockquote)>)\n+", "replacement": r"\1\n"},
-        {"target": "\n\n", "replacement": "<br>\n"},
+        {"target": r"(</(li|ol|ul|h\d|br|div|p|pre|blockquote)>)\n+", "replacement": r"\1\n"}, # compress newlines behind line breaking elements to allow correct br insertion between non line breaking elements
+        {"target": "\n\n", "replacement": "<br>\n"}, # insert brs for double newlines
     ]
     for basic_multiline_replacement in basic_multiline_replacements:
 
