@@ -35,10 +35,9 @@ def shift_dirs(directory_path):
     return directory_path
 
 def get_html_head(output_html_path):
-    assets_folder_relative = "../" * (output_html_path.count("/") - 2) + PAGE_ASSETS_BUILD_DIR + "/"
     replacements = [
         {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].replace("_", " ").title()},
-        {"target": r"{./styles.css}", "replacement": assets_folder_relative + "styles.css"},
+        {"target": r"{./styles.css}", "replacement": os.path.relpath(os.path.join(BUILD_DIR, PAGE_ASSETS_BUILD_DIR, "styles.css"), os.path.dirname(output_html_path))},
     ]
     head_html = open("./" + BUILD_ASSETS_DIR + "/head.html").read()
     for replacement in replacements:
