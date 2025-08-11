@@ -6,16 +6,17 @@ import sys
 BASE_DIRS = ["page_src/recipes"]
 BUILD_DIR = "dist/food"
 DIST_SHIFT_DIRS = ["page_src"]
-INDEX_BLACKLIST_DIRS = ["page_assets"]
+INDEX_BLACKLIST_DIRS = ["assets"]
 BUILD_ASSETS_DIR = "build_assets"
 PAGE_ASSETS_DIR = "page_assets"
+PAGE_ASSETS_BUILD_DIR = "assets"
 
 if "build.py" not in os.listdir():
     print("Aborting build, build.py not found in cwd. Navigate to build.py's parent directory and try again.")
     sys.exit()
 shutil.rmtree(BUILD_DIR, ignore_errors = True)
 os.makedirs(BUILD_DIR, exist_ok = True)
-shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_DIR, dirs_exist_ok = True)
+shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
 
 def walk_dirs(start_dirs):
     files = []
@@ -34,7 +35,7 @@ def shift_dirs(directory_path):
     return directory_path
 
 def get_html_head(output_html_path):
-    assets_folder_relative = "../" * (output_html_path.count("/") - 1) + PAGE_ASSETS_DIR + "/"
+    assets_folder_relative = "../" * (output_html_path.count("/") - 2) + PAGE_ASSETS_BUILD_DIR + "/"
     replacements = [
         {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].replace("_", " ").title()},
         {"target": r"{./styles.css}", "replacement": assets_folder_relative + "styles.css"},
