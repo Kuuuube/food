@@ -112,7 +112,7 @@ def markdown_to_html(markdown_string):
 
     # a -> b replacements spanning multiple lines
     basic_multiline_replacements = [
-        {"target": r"(</.*?>)\n+", "prefix": "", "replacement": r"\1\n", "suffix": ""},
+        {"target": r"(</(li|ol|ul|h\d|sub|br|div|p)>)\n+", "prefix": "", "replacement": r"\1\n", "suffix": ""},
         {"target": "\n\n", "prefix": "", "replacement": "<br>\n", "suffix": ""},
     ]
     for basic_multiline_replacement in basic_multiline_replacements:
