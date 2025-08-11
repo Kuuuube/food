@@ -51,6 +51,7 @@ def markdown_to_html(markdown_string):
         {"target": "^## ", "prefix": "", "replacement": "<h2>", "suffix": "</h2>"},
         {"target": "^# ", "prefix": "", "replacement": "<h1>", "suffix": "</h1>"},
         {"target": "^-# ", "prefix": "", "replacement": "<sub>", "suffix": "</sub>"},
+        {"target": r"\[(.+?)\]\((.+?)\)", "prefix": "", "replacement": r'<a href="\2">\1</a>', "suffix": ""},
     ]
     for basic_replacement in basic_replacements:
         i = 0
