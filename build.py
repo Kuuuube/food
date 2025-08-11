@@ -4,7 +4,7 @@ import shutil
 import sys
 
 BASE_DIRS = ["recipes"]
-BUILD_DIR = "food"
+BUILD_DIR = "dist/food"
 INDEX_BLACKLIST_DIRS = ["page_assets"]
 BUILD_ASSETS_DIR = "build_assets"
 PAGE_ASSETS_DIR = "page_assets"
