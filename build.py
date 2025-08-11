@@ -53,8 +53,8 @@ def markdown_to_html(markdown_string):
         {"target": "^-# ", "prefix": "", "replacement": "<sub>", "suffix": "</sub>"}, # subtext
         {"target": r"\[(.+?)\]\((.+?)\)", "prefix": "", "replacement": r'<a href="\2">\1</a>', "suffix": ""}, # link
         {"target": r"\*\*(.*)\*\*", "prefix": "", "replacement": r'<b>\1</b>', "suffix": ""}, # bold
-        {"target": r"\*(.*)\*", "prefix": "", "replacement": r'<i>\1</i>', "suffix": ""}, # italic
         {"target": "__(.*)__", "prefix": "", "replacement": r'<u>\1</u>', "suffix": ""}, # underline
+        {"target": r"(?:\*|_)(.*)(?:\*|_)", "prefix": "", "replacement": r'<i>\1</i>', "suffix": ""}, # italic
     ]
     for basic_replacement in basic_replacements:
         i = 0
