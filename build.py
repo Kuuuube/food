@@ -160,11 +160,11 @@ if __name__ == "__main__":
         output_html_path = noindex_dir + "/index.html"
         with open(output_html_path, "w") as index_file:
             index_file.write(get_html_head(output_html_path))
-            index_file.write("<body id=\"placeholder-index-page\"><div class=\"border-container\">\n")
             index_items = []
             for item in noindex_dir_list:
                 if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                     continue
-                index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>\n")
-            index_file.write("<hr>\n".join(index_items))
-            index_file.write("</div></body>\n")
+                index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>")
+            placeholder_index_template = open(os.path.join(BUILD_ASSETS_DIR, "placeholder_index.html")).read()
+            placeholder_index_template = placeholder_index_template.replace(r"{index_items}", "\n<hr>\n".join(index_items))
+            index_file.write(placeholder_index_template)
