@@ -1,0 +1,12 @@
+import sys
+
+# add src folder to path to allow accessing build.py there
+sys.path.append(sys.path[0] + "/../.")
+
+def test_markdown_render():
+    import build
+
+    test_page_markdown = open("./tests/test_page.md").read()
+    test_page_html = open("./tests/test_page.html").read()
+
+    assert(build.markdown_to_html(test_page_markdown) == test_page_html)
