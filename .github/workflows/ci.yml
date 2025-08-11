@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup environment
+        run: |
+          chmod +x ./setup.sh
+          ./setup.sh
+      - name: Run tests
+        run: |
+          chmod +x ./test.sh
+          ./test.sh
