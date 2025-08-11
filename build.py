@@ -9,7 +9,7 @@ DIST_SHIFT_DIRS = ["page_src"]
 INDEX_BLACKLIST_DIRS = ["assets"]
 BUILD_ASSETS_DIR = "build_assets"
 PAGE_ASSETS_DIR = "page_assets"
-PAGE_ASSETS_BUILD_DIR = "assets"
+PAGE_ASSETS_BUILD_DIR = os.path.join(BUILD_DIR, "assets")
 
 def walk_dirs(start_dirs):
     files = []
@@ -30,7 +30,7 @@ def shift_dirs(directory_path):
 def get_html_head(output_html_path):
     replacements = [
         {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].replace("_", " ").title()},
-        {"target": r"{./styles.css}", "replacement": os.path.relpath(os.path.join(BUILD_DIR, PAGE_ASSETS_BUILD_DIR, "styles.css"), os.path.dirname(output_html_path))},
+        {"target": r"{./styles.css}", "replacement": os.path.relpath(os.path.join(PAGE_ASSETS_BUILD_DIR, "styles.css"), os.path.dirname(output_html_path))},
     ]
     head_html = open("./" + BUILD_ASSETS_DIR + "/head.html").read()
     for replacement in replacements:
@@ -145,7 +145,7 @@ if __name__ == "__main__":
         sys.exit()
     shutil.rmtree(BUILD_DIR, ignore_errors = True)
     os.makedirs(BUILD_DIR, exist_ok = True)
-    shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
+    shutil.copytree(PAGE_ASSETS_DIR, PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
 
     for file_path in walk_dirs(BASE_DIRS):
         if file_path.split(".")[-1] == "md":
