@@ -170,7 +170,7 @@ if __name__ == "__main__":
                 output_html.write(render_html_page(output_html_path, markdown_data))
 
     for noindex_dir in get_noindex_dirs([BUILD_DIR]):
-        noindex_dir_list = os.scandir(noindex_dir)
+        noindex_dir_list = sorted(os.scandir(noindex_dir), key = lambda x: x.name)
         output_html_path = os.path.join(noindex_dir, "index.html")
         with open(output_html_path, "w") as index_file:
             index_file.write(get_html_head(output_html_path))
