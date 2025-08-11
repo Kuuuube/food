@@ -1,7 +1,7 @@
 const SEARCH_INDEX = {search_index};
 
-function update_search(search_text) {
-    const search_text_lowered = search_text.toLowerCase();
+function update_search() {
+    const search_text_lowered = document.querySelector("#index-page-search").value.toLowerCase();
     let possible_results = [];
     for (const search_item of SEARCH_INDEX) {
         if (search_text_lowered.length === 0) { break; }
@@ -28,8 +28,5 @@ function update_search(search_text) {
     }
 }
 
-document.querySelector("#index-page-search").addEventListener("input", (e) => {
-    update_search(e.target.value);
-});
-
-update_search("");
+document.querySelector("#index-page-search").addEventListener("input", update_search);
+update_search();
