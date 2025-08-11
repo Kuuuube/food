@@ -115,12 +115,20 @@ def markdown_to_html(markdown_string):
     basic_multiline_replacements = [
         {"target": "```((.|\n)*?)```", "replacement": r'<pre>\1</pre>'},
         {"target": "`(.*)`", "replacement": r'<code>\1</code>'},
+        {"target": "\n> (.*)", "replacement": r'\n<blockquote>\1</blockquote>'},
+        {"target": "\n>>> ((.|\n)*?(\n(?=\n)|$))", "replacement": r'\n<blockquote>\1</blockquote>'},
+        {"target": "\n", "replacement": r'<br>', "alternate_search": "(<blockquote>.*(?<!</blockquote>)\n(?:.|\n)*</blockquote>)"}, # Set `\n` to `<br>` inside multiline block quote
 
-        {"target": r"(</(li|ol|ul|h\d|br|div|p|pre)>)\n+", "replacement": r"\1\n"},
+        {"target": r"(</(li|ol|ul|h\d|br|div|p|pre|blockquote)>)\n+", "replacement": r"\1\n"},
         {"target": "\n\n", "replacement": "<br>\n"},
     ]
     for basic_multiline_replacement in basic_multiline_replacements:
-        result_html = re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html)
+
+        if "alternate_search" in basic_multiline_replacement:
+            for regex_match in re.findall(basic_multiline_replacement["alternate_search"], result_html):
+                result_html = re.sub(regex_match, re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], regex_match), result_html)
+        else:
+            result_html = re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html)
 
     return result_html
 
