@@ -178,7 +178,7 @@ if __name__ == "__main__":
             for item in noindex_dir_list:
                 if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                     continue
-                index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>")
+                index_items.append("<a href=\"" + "./" + item.name + "\"><h1>" + item.name.replace("_", " ").title() + "</h1></a>")
             placeholder_index_template = open(os.path.join(BUILD_ASSETS_DIR, "placeholder_index.html")).read()
             placeholder_index_template = placeholder_index_template.replace(r"{index_items}", "\n<hr>\n".join(index_items))
             placeholder_index_template = placeholder_index_template.replace(r"{search_js}", get_search_js(html_content_file_paths, output_html_path))
