@@ -549,13 +549,6 @@ code.multiline-code {
     margin-top: 25px;
 }
 
-@media print {
-    /* Show link href when printing */
-    a::after {
-        content: " " attr(href);
-    }
-}
-
 #markdown-hash {
     position: absolute;
     top: 0;
@@ -564,4 +557,11 @@ code.multiline-code {
     margin-right: 1em;
     color: var(--fgColor-muted);
     font-size: 75%;
+}
+
+@media print {
+    /* Show link href when printing */
+    a::after {
+        content: " " attr(href);
+    }
 }
