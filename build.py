@@ -116,6 +116,7 @@ def markdown_to_html(markdown_string):
         {"target": r"(</(li|ol|ul|h\d|br|div|p)>)\n+", "replacement": r"\1\n"},
         {"target": "\n\n", "replacement": "<br>\n"},
         {"target": "```((.|\n)*)```", "replacement": r'<pre>\1</pre>'},
+        {"target": "`(.*)`", "replacement": r'<code>\1</code>'},
     ]
     for basic_multiline_replacement in basic_multiline_replacements:
         result_html = re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html)
