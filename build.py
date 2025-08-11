@@ -62,7 +62,7 @@ def markdown_to_html(markdown_string):
 
     # replacements that need special handling at the start and end as well as allowing alternate matches to hold the state
     stateful_replacements = [
-        {"target": "^- ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
+        {"target": r"^(-|\*) ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
          "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"},
         {"target": "^[0-9]. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n",
          "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"},
