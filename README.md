@@ -59,3 +59,15 @@ Supported syntax:
     ```
     [Example](https://example.com)
     ```
+
+- Inline Code:
+    ```
+    `Example`
+    ```
+
+- Code Block:
+    ````
+    ```
+    Example
+    ```
+    ````
