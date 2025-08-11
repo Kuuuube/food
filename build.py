@@ -140,6 +140,13 @@ def get_noindex_dirs(start_dirs):
     return noindex_dirs
 
 if __name__ == "__main__":
+    if "build.py" not in os.listdir():
+        print("Aborting build, build.py not found in cwd. Navigate to build.py's parent directory and try again.")
+        sys.exit()
+    shutil.rmtree(BUILD_DIR, ignore_errors = True)
+    os.makedirs(BUILD_DIR, exist_ok = True)
+    shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
+
     for file_path in walk_dirs(BASE_DIRS):
         if file_path.split(".")[-1] == "md":
             markdown_data = open(file_path).read()
@@ -147,13 +154,6 @@ if __name__ == "__main__":
             os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
             with open(output_html_path, "w") as output_html:
                 output_html.write(render_html_page(output_html_path, markdown_data))
-
-    if "build.py" not in os.listdir():
-        print("Aborting build, build.py not found in cwd. Navigate to build.py's parent directory and try again.")
-        sys.exit()
-    shutil.rmtree(BUILD_DIR, ignore_errors = True)
-    os.makedirs(BUILD_DIR, exist_ok = True)
-    shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
 
     for noindex_dir in get_noindex_dirs([BUILD_DIR]):
         noindex_dir_list = os.scandir(noindex_dir)
