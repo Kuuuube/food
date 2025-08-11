@@ -8,18 +8,54 @@ View at https://kuuuube.github.io/food/.
 
 Supported syntax:
 
-- Headers: `#`, `##`, `###`, `####`, `#####`, `######`
+- Headers:
+    ```
+    # Example
+    ## Example
+    ### Example
+    #### Example
+    ##### Example
+    ###### Example
+    ```
 
-- Subtext: `-#`
+- Subtext:
+    ```
+    -# Example
+    ```
 
-- Unordered lists: `- `, `* `
+- Unordered lists:
+    ```
+    - Example
+    * Example
+    ```
 
-- Ordered lists: `1. `
+- Ordered lists:
+    ```
+    1. Example
+    2. Example
+    ```
 
-- Bold Italic: `***`
+- Bold Italic:
+    ```
+    ***Example***
+    ```
 
-- Bold: `**`
+- Bold:
+    ```
+    **Example**
+    ```
 
-- Italic: `*`
+- Italic:
+    ```
+    *Example*
+    ```
 
-- Links: `[Display Text](https://example.com)`
+- Underline:
+    ```
+    __Example__
+    ```
+
+- Links:
+    ```
+    [Example](https://example.com)
+    ```
