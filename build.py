@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 import sys
+import json
 
 BASE_DIRS = ["page_src/recipes"]
 BUILD_DIR = "dist/food"
@@ -124,6 +125,16 @@ def render_html_page(output_html_path, markdown_data):
     output_html += "</body>\n"
     return output_html
 
+def get_search_js(html_content_file_paths, output_html_path):
+    relative_html_content_paths = []
+    for html_content_file_path in html_content_file_paths:
+        name = html_content_file_path.replace("/index.html", "").split("/")[-1].replace("_", " ").title()
+        rel_path = os.path.relpath(os.path.dirname(html_content_file_path), os.path.dirname(output_html_path))
+        relative_html_content_paths.append({"name": name, "path": rel_path})
+    search_index = json.dumps(relative_html_content_paths)
+    search_js_index_injected = open(os.path.join(BUILD_ASSETS_DIR, "search.js")).read().replace(r"{search_index}", search_index)
+    return search_js_index_injected.strip()
+
 def get_noindex_dirs(start_dirs):
     dirs = start_dirs
     noindex_dirs = []
@@ -147,10 +158,13 @@ if __name__ == "__main__":
     os.makedirs(BUILD_DIR, exist_ok = True)
     shutil.copytree(PAGE_ASSETS_DIR, PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
 
+    html_content_file_paths = []
+
     for file_path in walk_dirs(BASE_DIRS):
         if file_path.split(".")[-1] == "md":
             markdown_data = open(file_path).read()
             output_html_path = shift_dirs(os.path.join(BUILD_DIR, file_path.split(".")[0] + ".html"))
+            html_content_file_paths.append(output_html_path)
             os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
             with open(output_html_path, "w") as output_html:
                 output_html.write(render_html_page(output_html_path, markdown_data))
@@ -167,4 +181,5 @@ if __name__ == "__main__":
                 index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>")
             placeholder_index_template = open(os.path.join(BUILD_ASSETS_DIR, "placeholder_index.html")).read()
             placeholder_index_template = placeholder_index_template.replace(r"{index_items}", "\n<hr>\n".join(index_items))
+            placeholder_index_template = placeholder_index_template.replace(r"{search_js}", get_search_js(html_content_file_paths, output_html_path))
             index_file.write(placeholder_index_template)
