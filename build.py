@@ -3,8 +3,9 @@ import re
 import shutil
 import sys
 
-BASE_DIRS = ["recipes"]
+BASE_DIRS = ["page_src/recipes"]
 BUILD_DIR = "dist/food"
+DIST_SHIFT_DIRS = ["page_src"]
 INDEX_BLACKLIST_DIRS = ["page_assets"]
 BUILD_ASSETS_DIR = "build_assets"
 PAGE_ASSETS_DIR = "page_assets"
@@ -26,6 +27,11 @@ def walk_dirs(start_dirs):
             elif item.is_file():
                 files.append(item.path)
     return files
+
+def shift_dirs(directory_path):
+    for shift_dir in DIST_SHIFT_DIRS:
+        directory_path = re.sub("/+", "/", directory_path.replace(shift_dir, "/"))
+    return directory_path
 
 def get_html_head(output_html_path):
     assets_folder_relative = "../" * (output_html_path.count("/") - 1) + PAGE_ASSETS_DIR + "/"
@@ -128,9 +134,9 @@ def render_html_page(output_html_path, markdown_data):
 for file_path in walk_dirs(BASE_DIRS):
     if file_path.split(".")[-1] == "md":
         markdown_data = open(file_path).read()
-        output_html_path = BUILD_DIR + "/" + file_path.split(".")[0] + ".html"
+        output_html_path = shift_dirs(BUILD_DIR + "/" + file_path.split(".")[0] + ".html")
         os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
-        with open(BUILD_DIR + "/" + file_path.split(".")[0] + ".html", "w") as output_html:
+        with open(output_html_path, "w") as output_html:
             output_html.write(render_html_page(output_html_path, markdown_data))
 
 def get_noindex_dirs(start_dirs):
