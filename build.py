@@ -95,6 +95,7 @@ def markdown_to_html(markdown_string):
     on_off_stateful_replacements = [
         {"target": r"\*\*", "replacement_on": "<b>", "replacement_off": "</b>"},
         {"target": r"\*", "replacement_on": "<i>", "replacement_off": "</i>"},
+        {"target": "__", "replacement_on": "<u>", "replacement_off": "</u>"},
     ]
     for on_off_stateful_replacement in on_off_stateful_replacements:
         state_active = True
