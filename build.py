@@ -52,6 +52,9 @@ def markdown_to_html(markdown_string):
         {"target": "^# ", "prefix": "", "replacement": "<h1>", "suffix": "</h1>"},
         {"target": "^-# ", "prefix": "", "replacement": "<sub>", "suffix": "</sub>"},
         {"target": r"\[(.+?)\]\((.+?)\)", "prefix": "", "replacement": r'<a href="\2">\1</a>', "suffix": ""},
+        {"target": r"\*\*(.*)\*\*", "prefix": "", "replacement": r'<b>\1</b>', "suffix": ""},
+        {"target": r"\*(.*)\*", "prefix": "", "replacement": r'<i>\1</i>', "suffix": ""},
+        {"target": "__(.*)__", "prefix": "", "replacement": r'<u>\1</u>', "suffix": ""},
     ]
     for basic_replacement in basic_replacements:
         i = 0
@@ -90,24 +93,6 @@ def markdown_to_html(markdown_string):
 
         if state_active:
             markdown_lines[markdown_lines_len - 1] += stateful_replacement["ending_suffix"]
-
-    # replacements that switch state after each replace
-    on_off_stateful_replacements = [
-        {"target": r"\*\*", "replacement_on": "<b>", "replacement_off": "</b>"},
-        {"target": r"\*", "replacement_on": "<i>", "replacement_off": "</i>"},
-        {"target": "__", "replacement_on": "<u>", "replacement_off": "</u>"},
-    ]
-    for on_off_stateful_replacement in on_off_stateful_replacements:
-        state_active = True
-        i = 0
-        markdown_lines_len = len(markdown_lines)
-        while i < markdown_lines_len:
-            while re.search(on_off_stateful_replacement["target"], markdown_lines[i]):
-                replacement_text = on_off_stateful_replacement["replacement_on"] if state_active else on_off_stateful_replacement["replacement_off"]
-                markdown_lines[i] = re.subn(on_off_stateful_replacement["target"], replacement_text, markdown_lines[i], count = 1)[0]
-                state_active = not state_active
-
-            i += 1
 
     result_html = "\n".join(markdown_lines)
 
