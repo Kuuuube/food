@@ -10,7 +10,7 @@ body {
     --base-text-weight-medium: 500;
     --base-text-weight-semibold: 600;
     --fontStack-monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-    --placeholder-index-page-width: max(max(50vw, 50vh), 500px);
+    --placeholder-index-page-width: min(max(max(50vw, 50vh), 500px), 95vw);
 }
 
 @media (prefers-color-scheme: dark) {
