@@ -150,14 +150,14 @@ if __name__ == "__main__":
     for file_path in walk_dirs(BASE_DIRS):
         if file_path.split(".")[-1] == "md":
             markdown_data = open(file_path).read()
-            output_html_path = shift_dirs(BUILD_DIR + "/" + file_path.split(".")[0] + ".html")
+            output_html_path = shift_dirs(os.path.join(BUILD_DIR, file_path.split(".")[0] + ".html"))
             os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
             with open(output_html_path, "w") as output_html:
                 output_html.write(render_html_page(output_html_path, markdown_data))
 
     for noindex_dir in get_noindex_dirs([BUILD_DIR]):
         noindex_dir_list = os.scandir(noindex_dir)
-        output_html_path = noindex_dir + "/index.html"
+        output_html_path = os.path.join(noindex_dir, "index.html")
         with open(output_html_path, "w") as index_file:
             index_file.write(get_html_head(output_html_path))
             index_items = []
