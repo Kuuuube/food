@@ -31,3 +31,5 @@ Black Pepper
 6. Let the dough rest for 30 minutes.
 
 7. Bake for 35-40 minutes at 350F. If baking on a metal tray or steel, put parchment paper under the bread.
+
+-# [Source](https://historicalitaliancooking.home.blog/english/recipes/streptikios-artos-ancient-greek-bread/)
