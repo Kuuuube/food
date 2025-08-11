@@ -126,7 +126,7 @@ def markdown_to_html(markdown_string):
 
         if "alternate_search" in basic_multiline_replacement:
             for regex_match in re.findall(basic_multiline_replacement["alternate_search"], result_html):
-                result_html = re.sub(regex_match, re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], regex_match), result_html)
+                result_html = re.sub(re.escape(regex_match), re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], regex_match), result_html)
         else:
             result_html = re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html)
 
