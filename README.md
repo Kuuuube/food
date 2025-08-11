@@ -71,3 +71,15 @@ Supported syntax:
     Example
     ```
     ````
+
+- Quote:
+    ```
+    > Example
+    ```
+
+- Multiline Quote:
+    ```
+    >>> Example
+    Second Line
+    Third Line
+    ```
