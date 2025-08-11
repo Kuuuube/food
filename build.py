@@ -11,13 +11,6 @@ BUILD_ASSETS_DIR = "build_assets"
 PAGE_ASSETS_DIR = "page_assets"
 PAGE_ASSETS_BUILD_DIR = "assets"
 
-if "build.py" not in os.listdir():
-    print("Aborting build, build.py not found in cwd. Navigate to build.py's parent directory and try again.")
-    sys.exit()
-shutil.rmtree(BUILD_DIR, ignore_errors = True)
-os.makedirs(BUILD_DIR, exist_ok = True)
-shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
-
 def walk_dirs(start_dirs):
     files = []
     dirs = start_dirs
@@ -131,14 +124,6 @@ def render_html_page(output_html_path, markdown_data):
     output_html += "</body>\n"
     return output_html
 
-for file_path in walk_dirs(BASE_DIRS):
-    if file_path.split(".")[-1] == "md":
-        markdown_data = open(file_path).read()
-        output_html_path = shift_dirs(BUILD_DIR + "/" + file_path.split(".")[0] + ".html")
-        os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
-        with open(output_html_path, "w") as output_html:
-            output_html.write(render_html_page(output_html_path, markdown_data))
-
 def get_noindex_dirs(start_dirs):
     dirs = start_dirs
     noindex_dirs = []
@@ -154,16 +139,32 @@ def get_noindex_dirs(start_dirs):
             noindex_dirs.append(current_dir)
     return noindex_dirs
 
-for noindex_dir in get_noindex_dirs([BUILD_DIR]):
-    noindex_dir_list = os.scandir(noindex_dir)
-    output_html_path = noindex_dir + "/index.html"
-    with open(output_html_path, "w") as index_file:
-        index_file.write(get_html_head(output_html_path))
-        index_file.write("<body id=\"placeholder-index-page\"><div class=\"border-container\">\n")
-        index_items = []
-        for item in noindex_dir_list:
-            if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
-                continue
-            index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>\n")
-        index_file.write("<hr>\n".join(index_items))
-        index_file.write("</div></body>\n")
+if __name__ == "__main__":
+    for file_path in walk_dirs(BASE_DIRS):
+        if file_path.split(".")[-1] == "md":
+            markdown_data = open(file_path).read()
+            output_html_path = shift_dirs(BUILD_DIR + "/" + file_path.split(".")[0] + ".html")
+            os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
+            with open(output_html_path, "w") as output_html:
+                output_html.write(render_html_page(output_html_path, markdown_data))
+
+    if "build.py" not in os.listdir():
+        print("Aborting build, build.py not found in cwd. Navigate to build.py's parent directory and try again.")
+        sys.exit()
+    shutil.rmtree(BUILD_DIR, ignore_errors = True)
+    os.makedirs(BUILD_DIR, exist_ok = True)
+    shutil.copytree(PAGE_ASSETS_DIR, BUILD_DIR + "/" + PAGE_ASSETS_BUILD_DIR, dirs_exist_ok = True)
+
+    for noindex_dir in get_noindex_dirs([BUILD_DIR]):
+        noindex_dir_list = os.scandir(noindex_dir)
+        output_html_path = noindex_dir + "/index.html"
+        with open(output_html_path, "w") as index_file:
+            index_file.write(get_html_head(output_html_path))
+            index_file.write("<body id=\"placeholder-index-page\"><div class=\"border-container\">\n")
+            index_items = []
+            for item in noindex_dir_list:
+                if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
+                    continue
+                index_items.append("<h1><a href=\"" + "./" + item.name + "\">" + item.name.replace("_", " ").title() + "</a></h1>\n")
+            index_file.write("<hr>\n".join(index_items))
+            index_file.write("</div></body>\n")
