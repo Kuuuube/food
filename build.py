@@ -117,16 +117,21 @@ def markdown_to_html(markdown_string):
 
     return result_html
 
+def render_html_page(output_html_path, markdown_data):
+    output_html = ""
+    output_html += get_html_head(output_html_path)
+    output_html += "<body>\n"
+    output_html += markdown_to_html(markdown_data)
+    output_html += "</body>\n"
+    return output_html
+
 for file_path in walk_dirs(BASE_DIRS):
     if file_path.split(".")[-1] == "md":
         markdown_data = open(file_path).read()
         output_html_path = BUILD_DIR + "/" + file_path.split(".")[0] + ".html"
         os.makedirs("/".join(output_html_path.split("/")[:-1]), exist_ok = True)
         with open(BUILD_DIR + "/" + file_path.split(".")[0] + ".html", "w") as output_html:
-            output_html.write(get_html_head(output_html_path))
-            output_html.write("<body>\n")
-            output_html.write(markdown_to_html(markdown_data))
-            output_html.write("</body>\n")
+            output_html.write(render_html_page(output_html_path, markdown_data))
 
 def get_noindex_dirs(start_dirs):
     dirs = start_dirs
