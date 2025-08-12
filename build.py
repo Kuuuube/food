@@ -105,6 +105,7 @@ def markdown_to_html(markdown_string):
         {"target": "\n> (.*)", "replacement": r'\n<blockquote>\1</blockquote>'}, # single line quote
         {"target": "\n>>> ((.|\n)*?(\n(?=\n)|$))", "replacement": r'\n<blockquote>\1</blockquote>'}, # multiline quote
         {"target": "\n", "replacement": r'<br>\n', "alternate_search": "(<blockquote>.*(?<!</blockquote>)\n(?:.|\n)*?(?:</blockquote>))"}, # set `\n` to `<br>` inside multiline block quote
+        {"target": "<!--.*?-->", "replacement": ""}, # remove html comments
 
         {"target": r"(</(li|ol|ul|h\d|br|div|p|pre|blockquote)>)\n+", "replacement": r"\1\n"}, # compress newlines behind line breaking elements to allow correct br insertion between non line breaking elements
         {"target": "\n\n", "replacement": "<br>\n"}, # insert brs for double newlines
