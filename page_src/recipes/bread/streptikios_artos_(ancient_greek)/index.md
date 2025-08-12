@@ -1,5 +1,7 @@
 # Streptikios Artos
 
+Difficulty: Low
+
 ## Ingredients:
 
 400g White Wheat Flour

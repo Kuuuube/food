@@ -1,5 +1,7 @@
 # Cinnamon Swirl (Whole Wheat)
 
+Difficulty: Low
+
 ## Ingredients
 
 **Starter:**

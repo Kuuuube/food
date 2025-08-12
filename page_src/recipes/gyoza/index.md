@@ -1,5 +1,7 @@
 # Dumplings (Gyoza) Recipe
 
+Difficulty: Medium
+
 Makes 30-40 dumplings.
 
 ## Ingredients
