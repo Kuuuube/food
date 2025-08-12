@@ -12,7 +12,7 @@ Black Pepper
 
 80ml Milk
 
-170ml Water
+170ml Water (reduce water if using poolish)
 
 30ml Olive Oil
 
