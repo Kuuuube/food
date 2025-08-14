@@ -33,6 +33,7 @@ def get_html_head(output_html_path):
     replacements = [
         {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].replace("_", " ").title()},
         {"target": r"{./styles.css}", "replacement": os.path.relpath(os.path.join(PAGE_ASSETS_BUILD_DIR, "styles.css"), os.path.dirname(output_html_path))},
+        {"target": r"{./search.js}", "replacement": os.path.relpath(os.path.join(PAGE_ASSETS_BUILD_DIR, "search.js"), os.path.dirname(output_html_path))},
     ]
     head_html = open("./" + BUILD_ASSETS_DIR + "/head.html").read()
     for replacement in replacements:
@@ -138,7 +139,7 @@ def get_search_js(html_content_file_paths, output_html_path):
         rel_path = os.path.relpath(os.path.dirname(html_content_file_path), os.path.dirname(output_html_path))
         relative_html_content_paths.append({"name": name, "path": rel_path})
     search_index = json.dumps(relative_html_content_paths)
-    search_js_index_injected = open(os.path.join(BUILD_ASSETS_DIR, "search.js")).read().replace(r"{search_index}", search_index)
+    search_js_index_injected = open(os.path.join(BUILD_ASSETS_DIR, "search_index.js")).read().replace(r"{search_index}", search_index)
     return search_js_index_injected.strip()
 
 def get_noindex_dirs(start_dirs):

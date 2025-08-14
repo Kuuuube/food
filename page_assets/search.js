@@ -1,5 +1,3 @@
-const SEARCH_INDEX = {search_index};
-
 function update_search() {
     const search_text_lowered = document.querySelector("#index-page-search").value.toLowerCase();
     let possible_results = [];
