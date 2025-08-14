@@ -527,7 +527,7 @@ code.multiline-code {
 .search-result {
     display: block;
     text-align: center;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: var(--bgColor-default);
     border: 1px solid var(--borderColor-muted);
     font-size: 2em;
     padding-left: 1em;
