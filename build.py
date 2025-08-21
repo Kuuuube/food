@@ -71,7 +71,7 @@ def markdown_to_html(markdown_string):
     stateful_replacements = [
         {"target": r"^(-|\*) ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
          "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"}, # ul and li children
-        {"target": "^[0-9]+. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n",
+        {"target": "^[0-9]+\. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n",
          "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"}, # ol and li children
     ]
 
