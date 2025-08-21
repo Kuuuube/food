@@ -27,4 +27,8 @@ Difficulty: Very easy
 8. Bake at 400F (204C) for 22-27 minutes.
 9. After removing the bread from the oven, wait 5 minutes before taking it out of the loaf pan.
 
+## Notes
+
+- If you toast this bread it will be like an english muffin. But it's also just good bread untoasted.
+
 -# [Source](https://www.kingarthurbaking.com/recipes/english-muffin-toasting-bread-recipe)
