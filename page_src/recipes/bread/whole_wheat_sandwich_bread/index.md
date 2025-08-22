@@ -27,7 +27,7 @@ Difficulty: Easy (dough knowledge helps but you will get good bread even with mi
 7. Place the log into a roughly 8.5x4.5" (21.5x11.5cm) loaf pan.
     If it doesn't fully sit on the bottom and makes a U shape, push the sides in and down until it fits.
 8. Cover and let rise for 1-2 hours.
-9. Uncover and bake for 35-40 minutes. After 20 minutes, tent some aluminum foil over the pan and continue baking for the remaining time.
+9. Uncover and bake for 35-40 minutes at 350F (176C). After 20 minutes, tent some aluminum foil over the pan and continue baking for the remaining time.
 10. (optional) After the bread is out of the oven and on a cooling rack, run a stick of butter over the top of the bread.
 
 ## Notes
