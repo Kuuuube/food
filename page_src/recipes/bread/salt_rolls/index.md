@@ -6,7 +6,7 @@ Difficulty: Medium
 
 ### Bread
 - 90g Bread flour
-- 60g Strong bread flour
+- 60g Strong bread flour (high gluten)
 - 2.2g Instant yeast
 - 2.5g Salt
 - 6g Sugar
