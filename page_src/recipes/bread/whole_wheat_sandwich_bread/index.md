@@ -16,9 +16,9 @@ Difficulty: Easy (dough knowledge helps but you will get good bread even with mi
 
 ## Directions
 
-1. Mix all ingredients except water and stir to combine.
-2. Slowly add water while mixing.
+1. Mix all ingredients stir to combine.
     If you are unsure how much water you need, start with the 227g and add more in tiny bits as needed.
+2. Cover and let rest for 20-30 minutes.
 3. Knead until somewhat smooth. Around 7 minutes. It wont get as smooth as a other doughs due to being 100% whole wheat.
     If you don't knead enough, the bread will come out fine but it may have a worse texture.
 4. Cover and let rise for 1-2 hours.
