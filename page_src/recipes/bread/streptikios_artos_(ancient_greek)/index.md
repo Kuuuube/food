@@ -4,19 +4,19 @@ Difficulty: Low
 
 ## Ingredients:
 
-400g White Wheat Flour
+- 400g White Wheat Flour
 
-Sourdough (or Poolish: 50g flour, 50g water, a pinch-1g yeast. Reduce water in recipe to 150g. Leave poolish overnight.)
+- Sourdough (or Poolish: 50g flour, 50g water, a pinch-1g yeast. Reduce water in recipe to 150g. Leave poolish overnight.)
 
-Black Pepper
+- Black Pepper
 
-80ml Milk
+- 80ml Milk
 
-170ml Water (reduce water if using poolish)
+- 170ml Water (reduce water if using poolish)
 
-30ml Olive Oil
+- 30ml Olive Oil
 
-2 pinches Salt
+- 2 pinches Salt
 
 ## Instructions:
 
