@@ -577,7 +577,10 @@ code.multiline-code {
 @media print {
     /* Show link href when printing */
     a::after {
-        content: " " attr(href);
+        content: " (" attr(href) ")";
+    }
+    a {
+        color: var(--fgColor-default);
     }
     #back-button {
         display: none;
