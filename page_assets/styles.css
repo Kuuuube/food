@@ -469,7 +469,7 @@ a:focus:not(:focus-visible) {
 
 #placeholder-index-page {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
@@ -509,14 +509,6 @@ body#placeholder-index-page > .border-container {
 
 .border-container > a > h1:hover {
     background-color: var(--borderColor-default);
-}
-
-#load-bearing-div {
-    /* height: 50px; Matches the height of #index-page-container */
-    margin-bottom: var(--search-index-container-margin);
-    border-bottom: var(--search-index-border-thickness) solid rgba(0, 0, 0, 0);
-    visibility: hidden;
-    font-size: var(--search-index-font-size);
 }
 
 code.multiline-code {
