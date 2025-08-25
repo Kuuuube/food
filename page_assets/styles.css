@@ -492,8 +492,7 @@ body#placeholder-index-page > .border-container {
     width: var(--placeholder-index-page-width);
     height: fit-content;
     border: .125em solid var(--borderColor-default);
-    margin: var(--border-container-margin);
-    margin-top: calc(var(--border-container-margin) + var(--search-index-container-margin))
+    margin: calc(var(--border-container-margin) + var(--search-index-container-margin)) var(--border-container-margin);
 }
 
 .border-container > hr {
