@@ -14,6 +14,7 @@ body {
     --search-index-container-margin: 12.5px;
     --search-index-border-thickness: 1px;
     --search-index-font-size: 2em;
+    --border-container-margin: 50px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -469,7 +470,7 @@ a:focus:not(:focus-visible) {
 
 #placeholder-index-page {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -491,7 +492,8 @@ body#placeholder-index-page > .border-container {
     width: var(--placeholder-index-page-width);
     height: fit-content;
     border: .125em solid var(--borderColor-default);
-    margin: 50px;
+    margin: var(--border-container-margin);
+    margin-top: calc(var(--border-container-margin) + var(--search-index-container-margin))
 }
 
 .border-container > hr {
@@ -548,11 +550,9 @@ code.multiline-code {
 
 #index-page-container {
     margin-top: var(--search-index-container-margin);
-}
-
-#index-page-search-results {
     position: absolute;
     width: var(--placeholder-index-page-width);
+    top: 0;
 }
 
 #markdown-hash {
