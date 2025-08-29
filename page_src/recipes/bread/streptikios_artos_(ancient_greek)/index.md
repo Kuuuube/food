@@ -6,7 +6,7 @@ Difficulty: Low
 
 - 400g White Wheat Flour
 
-- Sourdough (or Poolish: 50g flour, 50g water, a pinch-1g yeast. Reduce water in recipe to 150g. Leave poolish overnight.)
+- Sourdough (or Poolish: 50g flour, 50g water, a pinch-1g yeast. Reduce water in recipe to 150g. Leave poolish overnight before making the bread.)
 
 - Black Pepper
 
@@ -24,7 +24,9 @@ Difficulty: Low
 
 2. Knead until soft and flexible.
 
-3. Let the dough rise overnight.
+3. Let the dough rise overnight or until at least doubled.
+
+    If using poolish, this can go much quicker than sourdough. You may only need about 4 hours.
 
 4. Split the dough into two equal sized pieces.
 
