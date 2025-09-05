@@ -14,7 +14,7 @@ Difficulty: Very easy
 
 - 153g (0.75 cups) sugar
 
-- 157g (0.75 cups) packed brown sugar
+- 157g (0.75 cups packed) brown sugar
 
 - 8.5g (2 tsp) vanilla extract
 
