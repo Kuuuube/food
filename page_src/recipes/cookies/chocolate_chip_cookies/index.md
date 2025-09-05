@@ -1,5 +1,7 @@
 # Chocolate Chip Cookies
 
+Difficulty: Very easy
+
 ## Ingredients
 
 - 340g (2.25 cups) all purpose flour
