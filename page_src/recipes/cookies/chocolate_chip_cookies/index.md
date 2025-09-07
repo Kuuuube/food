@@ -46,6 +46,8 @@ Difficulty: Very easy
 
 ## Notes
 
+- This recipe can also be used to make chocolate chip cookie cake. Use roughly a 10x15" (25.5x38cm) tray that's at least 0.5" (1.25cm) deep. Pour the dough into the tray and spread evenly. Watch it very closely while baking, it is easier to end up overdone than the cookies.
+
 - This dough gets very thick. A stand mixer is a huge help.
 
 - I usually would highly recommend against using volumetric measurements and do not even include them in my recipes, but for these cookies there should be a wide enough margin for error for it to be okay.
