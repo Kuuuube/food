@@ -36,4 +36,8 @@ Difficulty: Low
 
 7. Bake for 35-40 minutes at 350F (176C). If baking on a metal tray or steel, put parchment paper under the bread.
 
+## Notes
+
+- This bread contains somewhat low salt. It goes great with a good salted butter.
+
 -# [Source](https://historicalitaliancooking.home.blog/english/recipes/streptikios-artos-ancient-greek-bread/)
