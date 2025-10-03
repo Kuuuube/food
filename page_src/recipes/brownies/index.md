@@ -33,7 +33,7 @@ Difficulty: Very easy
 
 **Brownies**
 
-1. Put a small saucepan over low heat
+1. Put a small saucepan over low heat.
 2. Combine olive oil, butter, white sugar, and brown sugar.
 3. Stir and wait for the butter to be fully melted. It will look very grainy or sandy.
 4. Remove from the heat.
