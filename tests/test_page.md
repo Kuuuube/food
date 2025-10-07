@@ -100,3 +100,15 @@ alert(message);
 This page site is rendered using `Kuuuube's custom markdown renderer`.
 
 `inline code on another line over here` and some other stuff
+
+## Inline HTML Test
+
+Some text with an extra line break below it:
+
+<br>
+
+Text after this line break.
+
+</br>
+
+The above line break uses the auto closing tag but the previous one didn't. They both render identically.
