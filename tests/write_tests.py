@@ -1,7 +1,7 @@
 import sys
 
 # add src folder to path to allow accessing build.py there
-sys.path.append(sys.path[0] + "/../.")
+sys.path.insert(0, sys.path[0] + "/../.")
 
 def write_test_page_html():
     import build
