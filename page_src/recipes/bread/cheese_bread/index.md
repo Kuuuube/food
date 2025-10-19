@@ -42,4 +42,6 @@ Difficulty: Low
 
 - I was unable to knead this dough in my stand mixer. You may have better luck but be prepared to knead this by hand.
 
+- You can use different cheeses if you'd like. The source recipe uses cheddar, cottage cheese, and parmesan. Make sure to adjust the water if you use wetter or drier cheeses.
+
 -# [Source](https://www.kingarthurbaking.com/recipes/triple-cheese-bread-recipe)
