@@ -44,4 +44,6 @@ Difficulty: Low
 
 - You can use different cheeses if you'd like. The source recipe uses cheddar, cottage cheese, and parmesan. Make sure to adjust the water if you use wetter or drier cheeses.
 
+- Shredding and grating the cheese fresh from a block is much better than pre-shreeded or grated. Pre-shredded or grated cheese is typically less fresh, contains preservatives, and includes extra ingredients to avoid clumping and sticking.
+
 -# [Source](https://www.kingarthurbaking.com/recipes/triple-cheese-bread-recipe)
