@@ -36,7 +36,9 @@ Makes 30-40 dumplings.
 2. Cut off a small piece of dough and make it into a ball (about 12g). Cover the main piece of dough while working.
 3. Squish the ball into a disk.
 4. Start from the outside and roll about 75% through then roll back. Pull up the dough, turn it about 90 degrees, and roll again.
+
     A lot of flour will be needed to minimize sticking (flour your rolling pin too not just the surface). A bench scraper helps a lot with not damaging the dough when pulling it up.
+
     The wrappers should be thin enough to slightly see though. Aim for 3-4" diameter (if you roll them too big, a circle cookie cutter can help cut them to size).
 5. Put the wrapper on a sheet tray lightly covered with plastic wrap.
 

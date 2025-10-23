@@ -7,41 +7,47 @@
     <script src="../dist/food/assets/search.js" defer></script>
 </head>
 <body>
-<a id="back-button" href="../"><-</a><span id="markdown-hash" title="a622abed954ef629d22d3e2d9c43d9d68e077d2effbb2b2e6ce193e63c59f157">a622abe</span>
-<h1>Markdown syntax guide</h1>
-<h2>Headers</h2>
-<h1>This is a Heading h1</h1>
-<h2>This is a Heading h2</h2>
-<h3>This is a Heading h3</h3>
-<h4>This is a Heading h4</h4>
-<h5>This is a Heading h5</h5>
-<h6>This is a Heading h6</h6>
-<h2>Emphasis</h2>
-<i>This text will be italic</i>
-<i>This will also be italic</i><br>
-<b>This text will be bold</b><br>
-<i>You <b>can</b> combine them this way</i>
-<i>and <b>this</b> way</i><br>
-<u>This will be underlined</u><br>
-<h2>Lists</h2>
-<blockquote>Nested lists are not supported yet</blockquote>
-<h3>Unordered</h3>
+<a id="back-button" href="../"><-</a><span id="markdown-hash" title="8e6be3e0df10e8de9b5ed12c4f8cc1433e44086188f302dedbc795f1a4f185b1">8e6be3e</span>
+<h1><a href="#markdown-syntax-guide" aria-hidden="true" class="anchor" id="markdown-syntax-guide"></a>Markdown syntax guide</h1>
+<h2><a href="#headers" aria-hidden="true" class="anchor" id="headers"></a>Headers</h2>
+<h1><a href="#this-is-a-heading-h1" aria-hidden="true" class="anchor" id="this-is-a-heading-h1"></a>This is a Heading h1</h1>
+<h2><a href="#this-is-a-heading-h2" aria-hidden="true" class="anchor" id="this-is-a-heading-h2"></a>This is a Heading h2</h2>
+<h3><a href="#this-is-a-heading-h3" aria-hidden="true" class="anchor" id="this-is-a-heading-h3"></a>This is a Heading h3</h3>
+<h4><a href="#this-is-a-heading-h4" aria-hidden="true" class="anchor" id="this-is-a-heading-h4"></a>This is a Heading h4</h4>
+<h5><a href="#this-is-a-heading-h5" aria-hidden="true" class="anchor" id="this-is-a-heading-h5"></a>This is a Heading h5</h5>
+<h6><a href="#this-is-a-heading-h6" aria-hidden="true" class="anchor" id="this-is-a-heading-h6"></a>This is a Heading h6</h6>
+<h2><a href="#emphasis" aria-hidden="true" class="anchor" id="emphasis"></a>Emphasis</h2>
+<p><em>This text will be italic</em>
+<em>This will also be italic</em></p>
+<p><strong>This text will be bold</strong></p>
+<p><em>You <strong>can</strong> combine them this way</em>
+<em>and <strong>this</strong> way</em></p>
+<p><strong>This will be underlined</strong></p>
+<h2><a href="#lists" aria-hidden="true" class="anchor" id="lists"></a>Lists</h2>
+<h3><a href="#unordered" aria-hidden="true" class="anchor" id="unordered"></a>Unordered</h3>
 <ul>
 <li>Item 1</li>
 <li>Item 2</li>
 <li>Item 2a</li>
-<li>Item 2b</li>
-    * Item 3a
-    * Item 3b<br>
+<li>Item 2b
+<ul>
+<li>Item 3a</li>
+<li>Item 3b</li>
 </ul>
-<h3>Ordered</h3>
+</li>
+</ul>
+<h3><a href="#ordered" aria-hidden="true" class="anchor" id="ordered"></a>Ordered</h3>
 <ol>
 <li>Item 1</li>
 <li>Item 2</li>
-<li>Item 3</li>
-    1. Item 3a
-    2. Item 3b<br>
+<li>Item 3
+<ol>
+<li>Item 3a</li>
+<li>Item 3b</li>
 </ol>
+</li>
+</ol>
+<!-- -->
 <ol>
 <li>1</li>
 <li>2</li>
@@ -59,35 +65,57 @@
 <li>14</li>
 <li>15</li>
 </ol>
-<h2>Links</h2>
-This is a link to <a href="https://github.com/Kuuuube">Kuuuube's github profile</a>.<br>
-<h2>Blockquotes</h2>
-<blockquote>Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.</blockquote>
-<blockquote>Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.<br>
-If you use three greater than symbols instead of just one it will pull in the next line<br>
-and the next line<br>
-and as many lines as you want<br>
+<h2><a href="#links" aria-hidden="true" class="anchor" id="links"></a>Links</h2>
+<p>This is a link to <a href="https://github.com/Kuuuube">Kuuuube's github profile</a>.</p>
+<h2><a href="#blockquotes" aria-hidden="true" class="anchor" id="blockquotes"></a>Blockquotes</h2>
+<blockquote>
+<p>Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.</p>
 </blockquote>
-as long as you dont put a blank newline inbetween them<br>
-<h2>Tables</h2>
-<blockquote>Tables arent supported yet</blockquote>
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |<br>
-<h2>Blocks of code</h2>
-<pre>
-let message = 'Hello world';
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
+If you use three greater than symbols instead of just one it will pull in the next line
+and the next line
+and as many lines as you want</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>as long as you dont put a blank newline inbetween them</p>
+<h2><a href="#tables" aria-hidden="true" class="anchor" id="tables"></a>Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Left columns</th>
+<th align="center">Right columns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>left foo</td>
+<td align="center">right foo</td>
+</tr>
+<tr>
+<td>left bar</td>
+<td align="center">right bar</td>
+</tr>
+<tr>
+<td>left baz</td>
+<td align="center">right baz</td>
+</tr>
+</tbody>
+</table>
+<h2><a href="#blocks-of-code" aria-hidden="true" class="anchor" id="blocks-of-code"></a>Blocks of code</h2>
+<pre><code>let message = 'Hello world';
 alert(message);
-</pre>
-<h2>Inline code</h2>
-This page site is rendered using <code>Kuuuube's custom markdown renderer</code>.<br>
-<code>inline code on another line over here</code> and some other stuff<br>
-<h2>Inline HTML Test</h2>
-Some text with an extra line break below it:<br>
+</code></pre>
+<h2><a href="#inline-code" aria-hidden="true" class="anchor" id="inline-code"></a>Inline code</h2>
+<p>This page site is rendered using <code>Kuuuube's custom markdown renderer</code>.</p>
+<p><code>inline code on another line over here</code> and some other stuff</p>
+<h2><a href="#inline-html-test" aria-hidden="true" class="anchor" id="inline-html-test"></a>Inline HTML Test</h2>
+<p>Some text with an extra line break below it:</p>
 <br>
-Text after this line break.<br>
+<p>Text after this line break.</p>
 </br>
-The above line break uses the auto closing tag but the previous one didn't. They both render identically.
+<p>The above line break uses the auto closing tag but the previous one didn't. They both render identically.</p>
 </body>

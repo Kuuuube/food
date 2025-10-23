@@ -4,6 +4,7 @@ import shutil
 import sys
 import json
 import hashlib
+import comrak
 
 BASE_DIRS = ["page_src/recipes"]
 BUILD_DIR = "dist/food"
@@ -45,79 +46,22 @@ def markdown_to_html(markdown_string):
     markdown_string_hash = hashlib.sha256(markdown_string.encode("utf-8")).hexdigest()
     markdown_lines = list(map(str.rstrip, markdown_string.split("\n"))) # strip excess whitespace only on right, left side whitespace is sytactically important
 
-    # a -> b replacements
-    basic_replacements = [
-        {"target": "^###### ", "prefix": "", "replacement": "<h6>", "suffix": "</h6>"}, # h6
-        {"target": "^##### ", "prefix": "", "replacement": "<h5>", "suffix": "</h5>"}, # h5
-        {"target": "^#### ", "prefix": "", "replacement": "<h4>", "suffix": "</h4>"}, # h4
-        {"target": "^### ", "prefix": "", "replacement": "<h3>", "suffix": "</h3>"}, # h3
-        {"target": "^## ", "prefix": "", "replacement": "<h2>", "suffix": "</h2>"}, # h2
-        {"target": "^# ", "prefix": "", "replacement": "<h1>", "suffix": "</h1>"}, # h1
-        {"target": "^-# ", "prefix": "", "replacement": "<sub>", "suffix": "</sub>"}, # subtext
-        {"target": r"\[(.+?)\]\((.+?)\)", "prefix": "", "replacement": r'<a href="\2">\1</a>', "suffix": ""}, # link
-        {"target": r"\*\*(.*)\*\*", "prefix": "", "replacement": r'<b>\1</b>', "suffix": ""}, # bold
-        {"target": "__(.*)__", "prefix": "", "replacement": r'<u>\1</u>', "suffix": ""}, # underline
-        {"target": r"(?:\*|_)(.*)(?:\*|_)", "prefix": "", "replacement": r'<i>\1</i>', "suffix": ""}, # italic
-    ]
-    for basic_replacement in basic_replacements:
-        i = 0
-        markdown_lines_len = len(markdown_lines)
-        while i < markdown_lines_len:
-            if re.search(basic_replacement["target"], markdown_lines[i]):
-                markdown_lines[i] = basic_replacement["prefix"] + re.sub(basic_replacement["target"], basic_replacement["replacement"], markdown_lines[i]) + basic_replacement["suffix"]
-            i += 1
+    subscript_regex = "^-# "
+    i = 0
+    while i < len(markdown_lines):
+        if re.search(subscript_regex, markdown_lines[i]):
+            markdown_lines[i] = re.sub(subscript_regex, "<sub>", markdown_lines[i]) + "</sub>"
+        i += 1
 
-    # replacements that need special handling at the start and end as well as allowing alternate matches to hold the state
-    stateful_replacements = [
-        {"target": r"^(-|\*) ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ul>\n", "ending_suffix": "</ul>\n",
-         "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"}, # ul and li children
-        {"target": r"^[0-9]+\. ", "prefix": "", "replacement": "<li>", "suffix": "</li>", "starting_prefix": "<ol>\n", "ending_suffix": "</ol>\n",
-         "alternate_target": r"(^\s{2,}|^$)", "alternate_prefix": "", "alternate_replacement": r"\1", "alternate_suffix": "<br>"}, # ol and li children
-    ]
+    # https://docs.rs/comrak/latest/comrak/options/struct.Extension.html
+    opts = comrak.ExtensionOptions()
+    render = comrak.RenderOptions()
+    opts.table = True
+    opts.header_ids = ""
+    opts.subscript = True
+    render.unsafe_ = True
 
-    for stateful_replacement in stateful_replacements:
-        state_active = False
-        i = 0
-        markdown_lines_len = len(markdown_lines)
-        while i < markdown_lines_len:
-            found_target = re.search(stateful_replacement["target"], markdown_lines[i])
-            found_alternative_target = re.search(stateful_replacement["alternate_target"], markdown_lines[i])
-            if found_target and state_active:
-                markdown_lines[i] = re.sub(stateful_replacement["target"], stateful_replacement["replacement"], markdown_lines[i]) + stateful_replacement["suffix"]
-            elif found_target:
-                markdown_lines[i] = stateful_replacement["starting_prefix"] + re.sub(stateful_replacement["target"], stateful_replacement["replacement"], markdown_lines[i]) + stateful_replacement["suffix"]
-                state_active = True
-            elif found_alternative_target and state_active:
-                markdown_lines[i] = re.sub(stateful_replacement["alternate_target"], stateful_replacement["alternate_replacement"], markdown_lines[i])
-            elif not found_target and state_active:
-                markdown_lines[i] = stateful_replacement["ending_suffix"] + "\n" + markdown_lines[i]
-                state_active = False
-            i += 1
-
-        if state_active:
-            markdown_lines[markdown_lines_len - 1] += stateful_replacement["ending_suffix"]
-
-    result_html = "\n".join(markdown_lines)
-
-    # a -> b replacements spanning multiple lines
-    basic_multiline_replacements = [
-        {"target": "```((.|\n)*?)```", "replacement": r'<pre>\1</pre>'}, # multiline code block
-        {"target": "`(.*)`", "replacement": r'<code>\1</code>'}, # inline code block
-        {"target": "\n> (.*)", "replacement": r'\n<blockquote>\1</blockquote>'}, # single line quote
-        {"target": "\n>>> ((.|\n)*?(\n(?=\n)|$))", "replacement": r'\n<blockquote>\1</blockquote>'}, # multiline quote
-        {"target": "\n", "replacement": r'<br>\n', "alternate_search": "(<blockquote>.*(?<!</blockquote>)\n(?:.|\n)*?(?:</blockquote>))"}, # set `\n` to `<br>` inside multiline block quote
-        {"target": "<!--.*?-->", "replacement": ""}, # remove html comments
-
-        {"target": r"(</?(li|ol|ul|h\d|br|div|p|pre|blockquote)>)\n+", "replacement": r"\1\n"}, # compress newlines behind line breaking elements to allow correct br insertion between non line breaking elements
-        {"target": "\n\n", "replacement": "<br>\n"}, # insert brs for double newlines
-    ]
-    for basic_multiline_replacement in basic_multiline_replacements:
-
-        if "alternate_search" in basic_multiline_replacement:
-            for regex_match in re.findall(basic_multiline_replacement["alternate_search"], result_html):
-                result_html = re.sub(re.escape(regex_match), re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], regex_match), result_html)
-        else:
-            result_html = re.sub(basic_multiline_replacement["target"], basic_multiline_replacement["replacement"], result_html)
+    result_html = comrak.render_markdown("\n".join(markdown_lines), extension_options = opts, render_options = render)
 
     result_html = "<span id=\"markdown-hash\" title=\"" + markdown_string_hash + "\">" + markdown_string_hash[:7] + "</span>\n" + result_html
     result_html = "<a id=\"back-button\" href=\"../\"><-</a>" + result_html

@@ -17,6 +17,7 @@ Difficulty: Very easy
 ## Directions
 
 1. Mix milk, water, and olive oil in a separate bowl. Heat to 120-130F (48-54C).
+
     It should feel uncomfortably hot to the touch but not burning hot. Err on the side of too cold. If it's too hot, it will kill the yeast.
 2. Mix all dry ingredients (except cornmeal).
 3. Pour the heated liquids over the dry ingredients.

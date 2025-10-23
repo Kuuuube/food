@@ -26,8 +26,6 @@ __This will be underlined__
 
 ## Lists
 
-> Nested lists are not supported yet
-
 ### Unordered
 
 * Item 1
@@ -79,8 +77,6 @@ and as many lines as you want
 as long as you dont put a blank newline inbetween them
 
 ## Tables
-
-> Tables arent supported yet
 
 | Left columns  | Right columns |
 | ------------- |:-------------:|
