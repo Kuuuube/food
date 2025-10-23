@@ -12,6 +12,8 @@
 ##### This is a Heading h5
 ###### This is a Heading h6
 
+-# This is a subtext
+
 ## Emphasis
 
 *This text will be italic*  
