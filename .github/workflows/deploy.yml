@@ -21,7 +21,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build static files
         id: build
-        run: python ./build.py
+        run: |
+            bash ./setup.sh
+            bash ./build.sh
 
       - name: Upload static files as artifact
         id: deployment
