@@ -18,7 +18,7 @@
 
 **Vegetables:**
 - 225g (2 medium sized) sweet red bell peppers
-- 75g (1.5 bunches) scallions, whites slices thinly, greens cut into 2" pieces
+- 75g (1.5 bunches) scallions, whites sliced thinly, greens cut into 2" pieces
 - 30g ginger
 - 40g (9 cloves) garlic, roughly minced
 - 350g (1-1.5 heads) of brocolli, cut into small pieces 
