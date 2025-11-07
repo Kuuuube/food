@@ -581,7 +581,7 @@ code.multiline-code {
 
 @media print {
     /* Show link href when printing */
-    a::after {
+    a:not(.anchor)::after {
         content: " (" attr(href) ")";
     }
     a {
