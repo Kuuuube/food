@@ -63,5 +63,8 @@ function update_search() {
     }
 }
 
-document.querySelector("#index-page-search").addEventListener("input", update_search);
-update_search();
+let index_page_search = document.querySelector("#index-page-search");
+if (index_page_search) {
+    index_page_search.addEventListener("input", update_search);
+    update_search();
+}
