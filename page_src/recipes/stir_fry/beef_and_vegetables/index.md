@@ -3,7 +3,7 @@
 ## Ingredients
 
 **Marinade:**
-- 900g (2lb) flank steam
+- 900g (2lb) flank steak
 - 20g soy sauce
 - 20g sesame oil
 - 30g Shaoxing cooking wine (or dry sherry)
