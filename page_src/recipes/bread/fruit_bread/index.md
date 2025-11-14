@@ -2,6 +2,8 @@
 
 I dedicate this recipe to James. Fruit bread with apricot jam is one of his favorites.
 
+Difficulty: Medium
+
 ## Ingredients
 
 - 416g bread flour
