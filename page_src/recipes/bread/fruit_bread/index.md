@@ -48,3 +48,9 @@ Difficulty: Medium
 12. Cover the loaf in aluminum foil and bake for 25 minutes.
 
 13. Remove the aluminum foil and bake for another 10 minutes.
+
+## Notes
+
+- Feel free to use different combinations of fruit in this if you prefer. Try to keep the total quantity roughly the same.
+
+- This bread is really good with some nice jam. I quite enjoy apricot jam on it.
