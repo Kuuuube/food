@@ -32,7 +32,9 @@ Difficulty: Medium
 
 4. Let rest for 10 minutes to absorb water.
 
-5. Knead until mostly smooth.
+5. Knead until mostly smooth. It will not get fully smooth.
+
+    If the dough is too slack, add a tiny bit more flour (add it very slowly to avoid adding too much). This dough does not need to be super strong but it should have some strength and should only be slightly sticky.
 
 6. Add and knead in the fruit.
 
