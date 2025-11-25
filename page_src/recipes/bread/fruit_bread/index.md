@@ -40,7 +40,7 @@ Difficulty: Medium
 
 7. Cover in a large bowl and let rise for 90 minutes.
 
-8. Grease a roughly 8.5x4.5" (21.5x11.5cm) loaf pan.
+8. Grease a roughly 9x5" (22.8x12.7cm) loaf pan.
 
 9. Form the dough into a log and place it into the loaf pan.
 
