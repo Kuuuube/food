@@ -12,6 +12,7 @@ Difficulty: Medium
 - 10g yeast
 - 45g honey
 - 20g sugar
+- 12g salt
 - 30g unsalted butter
 - 30g sunflower seeds
 - 30g oats
