@@ -48,9 +48,7 @@ Difficulty: Medium
 
 11. Preheat the oven to 425F (246C).
 
-12. Cover the loaf in aluminum foil and bake for 25 minutes.
-
-13. Remove the aluminum foil and bake for another 10 minutes.
+12. Bake for 10 minutes then cover with aluminum foil and bake for another 25 minutes.
 
 ## Notes
 
