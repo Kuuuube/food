@@ -1,9 +1,10 @@
+import hashlib
+import json
 import os
 import re
 import shutil
 import sys
-import json
-import hashlib
+
 import comrak
 
 BASE_DIRS = ["page_src/recipes"]
