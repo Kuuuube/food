@@ -42,7 +42,11 @@ Difficulty: Very easy
 
 8. Scoop into roughly 1.5" (3-4cm) balls. Space them out on the tray a bit more than the scoop size or they will merge together as they expand.
 
-9. Bake for 8-10 minutes.
+9. Bake for 8-12 minutes. Larger cookies or more cookies on the tray may result in a slightly longer bake time.
+
+    The cookies should be baked until mostly done but still a bit soft in the middle, as they cool the centers will firm up.
+
+10. Let them cool for a few minutes before putting them on a wire rack to cool.
 
 ## Notes
 
