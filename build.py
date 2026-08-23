@@ -57,7 +57,7 @@ def markdown_to_html(markdown_string):
     opts = comrak.ExtensionOptions()
     render = comrak.RenderOptions()
     opts.table = True
-    opts.header_ids = ""
+    opts.header_id_prefix = ""
     opts.subscript = True
     render.unsafe_ = True
 
