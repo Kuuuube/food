@@ -95,7 +95,7 @@ alert(message);
 
 ## Inline code
 
-This page site is rendered using `Kuuuube's custom markdown renderer`.
+This page site is rendered using `comrak`.
 
 `inline code on another line over here` and some other stuff
 
