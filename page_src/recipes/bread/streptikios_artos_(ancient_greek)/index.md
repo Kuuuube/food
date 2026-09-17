@@ -1,6 +1,6 @@
 # Streptikios Artos
 
-Difficulty: Low
+Difficulty: Easy
 
 ## Ingredients:
 

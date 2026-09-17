@@ -1,6 +1,6 @@
 # Cheese Bread
 
-Difficulty: Low
+Difficulty: Easy
 
 ## Ingredients
 
