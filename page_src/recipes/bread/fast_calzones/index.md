@@ -79,7 +79,7 @@ Difficulty: Medium
 
     For eight calzones they should be ~10.5" (26.6cm) diameter and for four calzones they should be ~13-14" (33-35.5cm) diameter.
 
-3. Put about two medium spoons of sauce on one half of the calzone. But don't get too close to the edges.
+3. Put about 2-4 medium spoons of sauce on one half of the calzone. But don't get too close to the edges.
 
     Any leftover sauce can be used for dipping.
 
