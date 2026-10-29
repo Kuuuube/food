@@ -43,11 +43,11 @@ Mix wok sauce and prepare vegetables before starting any further steps.
 
 **Stir Fry:**
 
-The order of ingredients added will be: scallion whites -> mushrooms and brocolli -> red bell pepper -> garlic and ginger -> wok sauce -> beef -> scallion greens
+The order of ingredients added will be: scallion whites -> mushrooms and broccoli -> red bell pepper -> garlic and ginger -> wok sauce -> beef -> scallion greens
 
 1. Heat peanut oil in a pan over medium-high heat.
 2. Add scallion whites and stir for about 1 minute.
-3. Add mushrooms and brocolli. Give these about 2 minutes.
+3. Add mushrooms and broccoli. Give these about 2 minutes.
 4. Add red bell pepper. Give this 1-2 minutes.
 5. Add garlic and ginger. Stir constantly to avoid burning for about 1 minute. Turn down the heat if necessary.
 6. Pour in the wok sauce and cook until slightly thickened.

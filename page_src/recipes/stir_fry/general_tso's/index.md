@@ -54,7 +54,7 @@ Mix sauce and prepare vegetables before starting any further steps.
 **Stir Fry:**
 1. Heat the sauce in a large pan over medium-high heat.
 2. Add green onion, garlic, and ginger and mix into the sauce.
-3. Add brocolli, carrots, and mushrooms. Cook until the brocolli is softer but still has a slight crunch.
+3. Add broccoli, carrots, and mushrooms. Cook until the broccoli is softer but still has a slight crunch.
 4. Add in the chicken and gently stir to coat it thoroughly in the sauce.
 
 -# [Inspiration](https://brianlagerstrom.com/recipes/general-tsos-chicken/)
