@@ -3,6 +3,7 @@ import json
 import os
 import re
 import shutil
+import string
 import sys
 
 import comrak
@@ -33,7 +34,7 @@ def shift_dirs(directory_path):
 
 def get_html_head(output_html_path):
     replacements = [
-        {"target": r"{page_title}", "replacement": output_html_path.split("/")[-2].replace("_", " ").title()},
+        {"target": r"{page_title}", "replacement": string.capwords(output_html_path.split("/")[-2].replace("_", " "))},
         {"target": r"{./styles.css}", "replacement": os.path.relpath(os.path.join(PAGE_ASSETS_BUILD_DIR, "styles.css"), os.path.dirname(output_html_path))},
         {"target": r"{./search.js}", "replacement": os.path.relpath(os.path.join(PAGE_ASSETS_BUILD_DIR, "search.js"), os.path.dirname(output_html_path))},
     ]
@@ -80,7 +81,7 @@ def render_html_page(output_html_path, markdown_data):
 def get_search_js(html_content_file_paths, output_html_path):
     relative_html_content_paths = []
     for html_content_file_path in html_content_file_paths:
-        name = html_content_file_path.replace("/index.html", "").split("/")[-1].replace("_", " ").title()
+        name = string.capwords(html_content_file_path.replace("/index.html", "").split("/")[-1].replace("_", " "))
         rel_path = os.path.relpath(os.path.dirname(html_content_file_path), os.path.dirname(output_html_path))
         relative_html_content_paths.append({"name": name, "path": rel_path})
     search_index = json.dumps(relative_html_content_paths)
@@ -130,7 +131,7 @@ if __name__ == "__main__":
             for item in noindex_dir_list:
                 if item.name in INDEX_BLACKLIST_DIRS or item.name == "index.html":
                     continue
-                index_items.append("<a href=\"" + "./" + item.name + "\"><h1>" + item.name.replace("_", " ").title() + "</h1></a>")
+                index_items.append("<a href=\"" + "./" + item.name + "\"><h1>" + string.capwords(item.name.replace("_", " ")) + "</h1></a>")
             placeholder_index_template = open(os.path.join(BUILD_ASSETS_DIR, "placeholder_index.html")).read()
             placeholder_index_template = placeholder_index_template.replace(r"{index_items}", "\n<hr>\n".join(index_items))
             placeholder_index_template = placeholder_index_template.replace(r"{search_js}", get_search_js(html_content_file_paths, output_html_path))
